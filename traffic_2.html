@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #traffic span{
+            display: inline-block;
+            height:80px;
+            width:80px;
+            border-radius: 40px;
+            background-color: gray;
+        }
+        #traffic.pass li:nth-child(1) span{
+            background-color: green;
+        }
+        #traffic.wait li:nth-child(2) span{
+            background-color: yellow;
+        }
+        #traffic.stop li:nth-child(3) span{
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <ul class='pass' id='traffic'>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+    </ul>
+    <script>
+        const traffic = document.getElementById('traffic');
+
+        function poll(...fnList){
+            let index = 0;
+                return function(...args){
+                    let fn = fnList[index++ % fnList.length];
+                    return fn.apply(this,args);
+            }
+        }
+
+        function setState(state){
+            traffic.className = state
+        }
+
+        let trafficStatePoll =  poll(setState.bind(null,'pass'),
+                                     setState.bind(null,'wait'),
+                                     setState.bind(null,'stop'));
+
+        setInterval(trafficStatePoll,2000);
+    </script>
+</body>
+</html>
