@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #userName input{
+            display: none;
+        }
+        #userName > li :hover{
+            background:black;
+            opacity: 0.2;
+            color:white;
+        }
+        #userName input:checked + label{
+            background:red;
+            opacity: 0.6;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <ul id="userName">
+        <li><input type="radio" value='王二' name = 'item' id='item0'><label for="item0">王二</label></li>
+        <li><input type="radio" value='张三' name = 'item' id='item1'><label for="item1">张三</label></li>
+        <li><input type="radio" value='李四' name = 'item' id='item2'><label for="item2">李四</label></li>
+        <li><input type="radio" value='刘六' name = 'item' id='item3'><label for="item3">刘六</label></li>
+    </ul>
+</body>
+</html>
